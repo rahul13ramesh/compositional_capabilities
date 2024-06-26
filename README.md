@@ -1,6 +1,6 @@
 # Compositional Capabilities of Autoregressive Transformers: A Study on Synthetic, Interpretable Tasks
 
-Code for our ICML 24 paper:  [Compositional Capabilities of Autoregressive Transformers: A Study on Synthetic, Interpretable Tasks][https://arxiv.org/abs/2311.12997]
+Code for our ICML 24 paper:  [Compositional Capabilities of Autoregressive Transformers: A Study on Synthetic, Interpretable Tasks](https://arxiv.org/abs/2311.12997)
 
 **Summary.** We create a synthetic setup to evaluate the ability of autoregressive Transformers to learn function compositions. We find that: (1) Autoregressive Transformers learn function compositions using very compositions in the training data (unlike LSTMs); (2) generating intermediate outputs when composing functions is more effective for generalizing to new, unseen compositions; (3) the attention layers select which function to apply while the feed-forward layers execute the selected capability. 
 
