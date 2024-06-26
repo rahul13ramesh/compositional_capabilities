@@ -32,6 +32,7 @@ The default config runs all 3 steps in less than 10 minutes.
 
 ## Directory structure
 
+```
 ├── 01_generate_data.py. # Generate train data
 ├── 02_train.py                   # Train networks
 ├── 03_evaluate_i.py         # Evaluating in-order functions
@@ -47,3 +48,4 @@ The default config runs all 3 steps in less than 10 minutes.
     ├── functions.py.    # Create functions and compositions
     ├── generator.py.    # Generate prompts for training and eval
     └── init.py                # Load config and set random seed
+```
