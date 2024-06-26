@@ -1,0 +1,39 @@
+# Location to store checkpoints
+tag: stepbystep_random50
+seed: 0
+
+device : "cuda"
+bf16: True
+epochs: 1
+
+data:
+  # Location of the dataset
+  path: "data/stepbystep_random50"
+  num_workers: 4
+  batch_size: 16
+
+net:
+  compile: False
+  vocab_size: 512
+  context_size: 50
+  n_layer: 2
+  n_head: 1
+  n_embd: 120
+  dropout: 0.0
+  bias: False
+  mlp: True
+
+optimizer:
+  learning_rate: 0.0003
+  weight_decay: 0.1
+  beta1: 0.9
+  beta2: 0.95
+  grad_clip: 1.0
+
+  decay_lr: True
+  warmup_iters: 200
+  min_lr: 0.000006
+
+log: 
+  eval_interval: 300
+  log_interval: 50

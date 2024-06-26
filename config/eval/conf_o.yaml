@@ -1,0 +1,14 @@
+tag: outorder_eval_step_random50
+seed: 0
+
+ckpt_tag: "stepbystep_random50"
+
+xlim: [0, 20000]  # Range of checkpoints to evaluaate
+nckpts: 20        # Number of checkpoints to evaluate
+
+permute: False
+direct_eval: False
+lstm: False
+
+nsamples: 100     # Number of samples to evaluate (per function composition)
+nbatch: 10        # Batch-size  = nbatch * nsamples

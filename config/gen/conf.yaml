@@ -1,0 +1,36 @@
+tag: stepbystep_random50  #  Location to store file
+seed: 0
+
+# Properties of the prompt
+n_alphabets: 10         # Total number of tokens
+seq_len: 6              # Length of tokens in prompt
+ndocuments: 100000      # Number of training documents
+neval_documents: 10000  # Number of evaluation documents
+with_replacement: True  # Sample tokens with replacement
+
+task_tokens: True      # Use task-token format (as opposed to in-context form)
+direct: False          # Step-by-step (cot=True) vs direct (cot=False)
+
+
+# Properties of the function composition
+function:
+  depth: 5        # Number of compositions
+  n_functions: 3  # Number of functions per composition
+  repeat: False   # Repeat functions for every step of composition
+  permute: False  # Use permutations instead of bijections
+
+  split:
+    strategy: 'random' 
+    # Possible choices include:
+    # ['base', 'random', 'random_biased', 'random_combo', 'base_combo', 'randombase_combo']
+    #
+    # (1) base - Basis for group + random in-order compositions of functions
+    # (2) random - Random in-order compositions of functions
+    # (3) random_biased - Fixes number of identity functions in training compositions
+    # (4) random_combo - Random out-of-order compositions of functions 
+    # (5) base_combo - 'Base' + random out-of-order compositions of functions
+    # (6) randombase_combo - 'base' + inorder + out-of-order compositions
+
+    n_compositions: 50   # Number of random compositions to include
+    n_identity: 0        # Only set for 'random_biased'. Dtermines number of functions set to identity
+
