@@ -8,7 +8,6 @@ ndocuments: 100000      # Number of training documents
 neval_documents: 10000  # Number of evaluation documents
 with_replacement: True  # Sample tokens with replacement
 
-task_tokens: True      # Use task-token format (as opposed to in-context form)
 direct: False          # Step-by-step (cot=True) vs direct (cot=False)
 
 

@@ -34,12 +34,9 @@ class SyntheticData:
         self.task_idx = {}
         self.task = {}
 
-        if self.cfg.task_tokens:
-            self.depth = len(self.functions_info['functions'])
-            self.nfuncs = [len(fn) for fn in self.functions_info['functions']]
-            self.n_tasks = sum(self.nfuncs)
-        else:
-            self.n_tasks = 0
+        self.depth = len(self.functions_info['functions'])
+        self.nfuncs = [len(fn) for fn in self.functions_info['functions']]
+        self.n_tasks = sum(self.nfuncs)
 
         self.nsplit_tasks = {
             'train': len(self.functions_info['train_id']),
@@ -283,21 +280,19 @@ class SyntheticEval(SyntheticData):
         sp_idx = self.token_idx[' ']
         total_len = len(sample)
 
-        if (not self.cfg['direct']) and self.cfg['task_tokens']:
+        if (not self.cfg['direct']):
             sp_pos = np.where(sample == sp_idx)[0]
 
             seq_info['last_space'] = sp_pos[-1]
             seq_info['prompt'] = sp_pos[1] + 1
             seq_info['new'] = total_len - seq_info['prompt']
 
-        elif self.cfg['task_tokens']:
-            sp_pos = np.where(sample == sp_idx)[0]
-
-            seq_info['last_space'] = sp_pos[-1]
-            seq_info['prompt'] = sp_pos[1] + 1
-            seq_info['new'] = total_len - seq_info['prompt']
         else:
-            raise ValueError
+            sp_pos = np.where(sample == sp_idx)[0]
+
+            seq_info['last_space'] = sp_pos[-1]
+            seq_info['prompt'] = sp_pos[1] + 1
+            seq_info['new'] = total_len - seq_info['prompt']
 
         return seq_info
 
@@ -667,7 +662,7 @@ def get_seq_info(fpath, loader):
     sample = loader.dataset.data[0]
     total_len = len(sample)
 
-    if (not data_cfg['direct']) and data_cfg['task_tokens']:
+    if (not data_cfg['direct']):
         sp_pos = np.where(loader.dataset.data[0] == sp_idx)[0]
 
         seq_info['last_space'] = sp_pos[-1]
